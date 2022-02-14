@@ -1,0 +1,133 @@
+﻿<Window x:Name="MainWindow1" x:Class="horus_reboot.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="namespace:horus_reboot"
+        mc:Ignorable="d"
+        
+        Title="Horus app v0.82" Height="434.667" Width="529.333" Closed="MainWindow1_Closed" KeyDown="MainWindow1_KeyDown" Icon="icon.ico" >
+        
+
+    <Window.Resources>
+        <Style TargetType="RadioButton">
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="True">
+                    <Setter Property="Opacity" Value="1"/>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="False">
+                    <Setter Property="Opacity" Value="0.3"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <ControlTemplate x:Key="ToggleZoomTool">
+            <Grid Background="#FFE4F5F9">
+                <Image Source="assets/tool1.png" Width="30" Height="30"></Image>
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="TogglePointTool">
+            <Grid Background="#FFE4F5F9">
+                <Image Source="assets/tool2.png" Width="30" Height="30"></Image>
+            </Grid>
+            <ControlTemplate.Triggers></ControlTemplate.Triggers>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ToggleEditTool">
+            <Grid Background="#FFE4F5F9">
+                <Image Source="assets/tool3.png" Width="30" Height="30"></Image>
+            </Grid>
+            <ControlTemplate.Triggers></ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
+
+    <Grid x:Name="WindowGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Grid.Row="0">
+            <Menu DockPanel.Dock="Top" Height="25" VerticalAlignment="Top" >
+                <MenuItem Header="Файл">
+                    <MenuItem Header="Новая модель" Click="newFile_Click"/>
+                    <MenuItem Header="Загрузить модель" Click="loadFile_Click"/>
+                    <MenuItem Header="Сохранить модель" Click="saveFile_Click"/>
+                    <MenuItem Header="Сохранить как..." Click="saveFileAs_Click"/>
+                    <MenuItem x:Name="renamecommand" Header="Переименовать модель" Click="renameModel_Click" IsEnabled="False"/>
+                    <Separator />
+                    <MenuItem Header="выход" Click="exitsoft_Click"/>
+
+                </MenuItem>
+
+                <MenuItem Header="Добавить вид" Click="addView_Click"/>
+                <MenuItem Header="Окно ракурсов" Click="showViewWindow_Click"/>
+                <MenuItem Header="Вывод в html" >
+                    <MenuItem Header="Широкий вывод 1 страница" Click ="XslExportWide_Click"/>
+                    <MenuItem Header="Вывод 3 на страницу" Click="XslExportThree_Click"/>
+                    <!--<MenuItem Header="Вывод для экспорта в гос каталог" Click="xslshortexport_Click"/>-->
+                </MenuItem>
+                <MenuItem x:Name="OptionOpen" Header="Настройки" Click="OptionOpen_Click">
+                    
+                </MenuItem>
+            </Menu>
+
+        </DockPanel>
+
+
+        <StackPanel Margin="0,5,0,10" HorizontalAlignment="Right" Width="41" Grid.Row="1">
+            <RadioButton x:Name="radio_Zoom" GroupName="tools" Checked="radio_Zoom_Checked" ToolTip="режим прокрутки" Template="{DynamicResource ToggleZoomTool}" Margin="6,0" Width="30" />
+            <RadioButton x:Name="radio_Point" GroupName="tools" Checked="radio_Point_Checked" ToolTip="режим создания измерительных линий" Template="{DynamicResource TogglePointTool}" Margin="6,0" Width="30" />
+            <RadioButton x:Name="radio_MoveLine" GroupName="tools" Checked="radio_MoveL_Checked" ToolTip="режим перемещения линий" Template="{DynamicResource ToggleEditTool}" Margin="6,0" Width="30" />
+
+            <Separator />
+            <Button x:Name="HelperCreation" Click="radio_Helper_Checked" BorderBrush="{x:Null}" Background="{x:Null}">
+                <Image Source="assets/tool4.png" Width="25" Height="25"/>
+            </Button>
+            <Button x:Name="button_ActFitImage" Click="button_ActFitImage_Click" ToolTip="поместить изображение в окно" BorderBrush="{x:Null}" Background="{x:Null}">
+                <Image Source="assets/scale.png" Width="35" Height="30"/>
+            </Button>
+            <Slider x:Name="ZoomSlider" Minimum="1" Orientation="Vertical" Height="117" HorizontalAlignment="Center" Maximum="20" />
+            <ToggleButton x:Name="togglemeasure" Content="M" Margin="5,5,5,0" IsChecked="True" Checked="togglemeasure_Checked" Unchecked="togglemeasure_Unchecked" />
+            <ToggleButton x:Name="togglehelper" Content="H" Margin="5,5,5,0" IsChecked="True" Unchecked="togglehelper_Unchecked" Checked="togglehelper_Checked"/>
+        </StackPanel>
+
+
+        <!--<Grid x:Name="ImgContainer" RenderTransformOrigin="0.5,0.5">
+                <Grid.LayoutTransform>
+                    <TransformGroup>
+                        <ScaleTransform x:Name="ImgScale"/>
+                    </TransformGroup>
+                </Grid.LayoutTransform>
+                <Viewbox Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" >
+                    <Image x:Name="MainImageFrame" Margin="0,0,-1,-1"/>
+                    
+                </Viewbox>
+                <Canvas>
+                
+                  <Line X1="50" X2="30" Y1="100" Y2="150" StrokeThickness="3" Fill="Black" Stroke="Black"></Line>
+                </Canvas>
+                <Line StrokeThickness="2" X1="15" X2="300" Y1="30" Y2="200" Stroke="#FFE45555" Height="258" Width="440" ></Line>
+            </Grid> -->
+
+        <ScrollViewer x:Name="ScrollPort" Margin="10,5,41,10" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible" Background="Black" Grid.Row="1">
+            <Viewbox x:Name="ImgContainer" Height="260" Width="450">
+                <Viewbox.LayoutTransform>
+                    <TransformGroup>
+                        <ScaleTransform x:Name="ImgScale"/>
+                    </TransformGroup>
+                </Viewbox.LayoutTransform>
+                <Grid>
+                    <Canvas x:Name="MeasureFrame" Width="450" Height="260" ClipToBounds="True" Background="#FFFFC9C9">
+                        <Image x:Name="MainImageFrame" Stretch="UniformToFill" Panel.ZIndex="0"  SizeChanged="MainImageFrame_SizeChanged" SnapsToDevicePixels="True" />
+
+                    </Canvas>
+                </Grid>
+            </Viewbox>
+        </ScrollViewer>
+
+        <Label x:Name ="Notificationline" Content="temp message" VerticalAlignment="Top" HorizontalContentAlignment="Center" Background="#72EAEAEA" Margin="10,35,57,0" IsEnabled="False" Visibility="Hidden" Grid.Row="0"/>
+    </Grid>
+
+</Window>

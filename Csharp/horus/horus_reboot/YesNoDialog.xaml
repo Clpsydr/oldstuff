@@ -1,0 +1,23 @@
+﻿<Window x:Class="horus_reboot.YesNoDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:horus_reboot"
+        mc:Ignorable="d"
+        Title="Внимание" Height="150" Width="260" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"/>
+            <RowDefinition Height="0.3*"/>
+        </Grid.RowDefinitions>
+        <Button x:Name="yesReply" Grid.Row="1" Grid.Column="0" Content="Да" HorizontalAlignment="Center" Margin="0" VerticalAlignment="Center" Width="75" Click="yesReply_Click" Height="22"/>
+        <Button x:Name="noReply" Grid.Row="1" Grid.Column="1" Content="Нет"  Width="75" VerticalAlignment="Center" HorizontalAlignment="Center" Click="noReply_Click" Height="22"/>
+        <TextBlock x:Name="Msgbox" Grid.Row="0" HorizontalAlignment="Center" Margin="10,10,10,0" TextWrapping="Wrap" Text="Messagebox" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="234" Height="64" TextAlignment="Center"/>
+
+    </Grid>
+</Window>

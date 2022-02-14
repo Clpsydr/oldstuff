@@ -3,6 +3,11 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# LUA related Image assets
+*.png
+*.cdr
+*.tga
+
 # User-specific files
 *.rsuser
 *.suo

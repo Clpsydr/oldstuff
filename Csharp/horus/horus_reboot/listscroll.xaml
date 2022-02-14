@@ -1,0 +1,65 @@
+﻿<Window x:Class="horus_reboot.listscroll"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:horus_reboot"
+        mc:Ignorable="d"
+        Title="виды модели" Width="529.167" ShowInTaskbar="False" d:DesignHeight="200" VerticalAlignment="Top" HorizontalAlignment="Center" Height="400" Icon="icon.ico">
+    <Window.Resources>
+        <Style x:Key="MeasureList" TargetType="GridViewColumnHeader">
+            <Setter Property="Background" Value="Bisque"/>
+        </Style>
+
+        <!--Set up third column with ellipse. Trigger for red ellipse if true-->
+    </Window.Resources>
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="viewcontainer" Background="#FFFFE0E0" Grid.Column="0" Margin="5">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="переименовать вид" Click="RenameRclick"/>
+                    <MenuItem Header="удалить вид" Click="RemoveRclick"/>
+                    <Separator/>
+                    <!--                    <MenuItem Header="добавить после этого вида" />-->
+                </ContextMenu>
+            </ListBox.ContextMenu>
+        </ListBox>
+
+        <Label x:Name="MeasureListLabel" Content="Размеры на выделенном виде:"  VerticalAlignment="Top" Height="30" Grid.Column="1" Margin="5,0,3,0"/>
+        <ListView x:Name="MeasureView" MouseDoubleClick="MeasureView_MouseDoubleClick" SelectionChanged="MeasureView_SelectionChanged" Grid.Column="1" Margin="5,30,5,5">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Переименовать" Click="MeasureOptionsRclick"/>
+                    <MenuItem Header="Удалить" Click="RemoveMeasureRclick"/>
+                    <MenuItem Header="Сделать эталонным размером" Click="SetUpEthalon" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.View>
+                <GridView x:Name="columnset" ColumnHeaderContainerStyle="{StaticResource MeasureList}">
+                    <GridViewColumn x:Name="namecolumn" Header="название" DisplayMemberBinding="{Binding Name}" Width="100"/>
+
+
+                    <!--DisplayMemberBinding="{Binding IsRealSize}"-->
+                    <GridViewColumn x:Name="realsizecolumn" Header="эталон" >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Ellipse Fill="{Binding EthalonPresense}" Width="10" Height="10" Stroke="Black"></Ellipse>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn x:Name="realsizelengthcolumn" Header="мм" DisplayMemberBinding="{Binding RealSize}" Width="100"></GridViewColumn>
+                    <!--Text="{Binding Cost, ValidatesOnExceptions=True, StringFormat="{0:F?}" }"-->
+                    <GridViewColumn x:Name="lengthcolumn" Header="усл. длина" DisplayMemberBinding="{Binding Size}" Width="70"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+    </Grid>
+</Window>

@@ -1,0 +1,49 @@
+﻿<Window x:Class="horus_reboot.options"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:horus_reboot"
+        mc:Ignorable="d"
+        Title="options" Height="350" Width="313.57">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*"/>
+            <RowDefinition Height="3*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2" Margin="5">
+            <Label Content="Место сохранения моделей по умолчанию: " Margin="-5"></Label>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <TextBox x:Name="savepath" MinWidth="200" Margin="0,0,10,0">savepath</TextBox>
+                <Button x:Name="savepathchange" Content="change..." Click="savepathchange_Click"></Button>
+            </StackPanel>
+            <Label Content="Путь к хранилищу моделей (загрузка): " Margin="-5"></Label>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <TextBox MinWidth="200" Margin="0,0,10,0" Opacity="0.5">loadpath</TextBox>
+                <Button x:Name="loadpathchange" Content="change..." Opacity="0.5"></Button>
+            </StackPanel>
+            <Label Content="Путь к фото по умолчанию: " Margin="-5"></Label>
+            <StackPanel Margin="10" Orientation="Horizontal">
+                <TextBox x:Name="loadpath" MinWidth="200" Margin="0,0,10,0">loadphotopath</TextBox>
+                <Button x:Name="loadphotochange" Content="change..." Click="loadphotochange_Click"></Button>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+            <Label Content="единицы измерения: "></Label>
+                <ComboBox Width="50" x:Name="measurevalues">
+                <ComboBoxItem Content="mm" IsSelected="True"></ComboBoxItem>
+                <ComboBoxItem Content="cm"></ComboBoxItem>
+                <ComboBoxItem Content="dm"></ComboBoxItem>
+                <ComboBoxItem Content="m"></ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+
+        </StackPanel>
+        <Button x:Name="savebutton" Content="_Сохранить" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" Click="savebutton_Click" Width="80"></Button>
+        <Button x:Name="cancelbutton" Content="_Отмена" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" MinWidth="50" Click="cancelbutton_Click" Width="80" IsCancel="True"></Button>
+        
+    </Grid>
+</Window>

@@ -1,0 +1,16 @@
+﻿<Window  x:Class="horus_reboot.InputDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:horus_reboot"
+        mc:Ignorable="d"
+        Title="Переименование ракурса" Height="150" Width="320" ContentRendered="Window_ContentRendered" ResizeMode="NoResize">
+    <Grid >
+        <TextBlock x:Name="DialogLabel" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Введите новое название ракурса:" VerticalAlignment="Top" TextAlignment="Center"/>
+        <TextBox x:Name="InputBox" HorizontalAlignment="Center" Margin="10,39,10,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="272"/>
+        <Button x:Name="OkButton" Content="Ok" HorizontalAlignment="Center" Margin="10,76,176,0" VerticalAlignment="Top" Width="106" Height="22" Click="OkButton_Click" IsDefault="True"/>
+        <Button x:Name="CancelButton" Content="Отмена" HorizontalAlignment="Center" Margin="176,76,10,0" VerticalAlignment="Top" Width="106" Height="22" IsCancel="True"/>
+
+    </Grid>
+</Window>
