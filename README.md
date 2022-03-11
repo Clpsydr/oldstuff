@@ -3,11 +3,7 @@ A few projects from before 2014, both games and work related
 
 ## C# XAML photo measurement application
 
-* MainWindow.xaml/editmode.cs 	
- - central window counting
- - controls
- - serialization
- - loading photos
+* MainWindow.xaml/editmode.cs : central window counting, controls, serialization, loading photos
 * listscroll.xaml/cs	: side window with a list of measurements and photos in a model
 * measure.cs		: class for a visual line object in central window
 * view.cs		: class for a "model" view including set of measures and photos
